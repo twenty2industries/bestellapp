@@ -13,7 +13,7 @@ function returnHeader() {
 
 function returnShoppingcartContainer() {
   const shoppingCarContainerRef = document.getElementById("shopping-cart");
-  return (shoppingCarContainerRef.innerHTML += `        <div class="shoppingCart">
+  return (shoppingCarContainerRef.innerHTML += `<div class="shoppingCart">
           <span><h2>WARENKORB</h2></span>
           <div class="hyphen"></div>
           <div class="cartItems" id="cart-items">
@@ -32,15 +32,17 @@ function returnShoppingcartContainer() {
 
 function returnContent() {
   const contentRef = document.getElementById("content-area");
-  return (contentRef.innerHTML += `        <div class="titleImgMain"><h1>Titelbild</h1></div>
+  return (contentRef.innerHTML += `        <div class="titleImgMain"></div>
         <div class="infoSection" id="info-section">
-          <h1>GeschäftInfo & Bewertung</h1>
+          <h2>Twenty2Kitchen</h2>
+          <span> Bewertung (4.2 von 5 Sternen)</span>
         </div>
-        <div class="menuTabs" id="menu-tabs"><h1>TAB NAV</h1></div>
-        <div class="titleImgSecond">
-          <h1>TAB NAV TITELBILD (HAUPTGERICHT)</h1>
+        <div class="menuTabsDisplay">
+        <div class="menuTabs">Hauptgerichte</div>
+        <div class="menuTabs">Beilagen</div>
         </div>
-        <div class="menuTabName" id="menuTabName"><h1>TAB NAV NAME</h1></div>`);
+        <div class="titleImgSecond"></div>
+        <div class="menuTabName"><h2>Hauptgerichte</h2></div>`);
 }
 
 function returnDishes(index) {

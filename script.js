@@ -27,12 +27,8 @@ const myDishes = [
   },
 ];
 
-const allImgs = [
-  
-]
-
 function init() {
-  renderAll()
+  renderAll();
 }
 
 function renderContent() {

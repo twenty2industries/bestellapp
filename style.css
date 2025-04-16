@@ -33,6 +33,7 @@ main {
   width: 100%;
 
   .contentArea {
+    color: black;
     border: 1rem solid #ffffff;
     width: 70%;
   }
@@ -52,27 +53,48 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     height: 20%;
-    background-color: #000000;
   }
 
   .infoSection {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0rem 2rem;
     height: 10%;
-    background-color: #a12121;
+
+    span{
+      color: orange;
+    }
   }
 
-  .menuTabs {
+  .menuTabsDisplay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffce5b3b;
+    padding: 0rem 2rem;
     height: 4%;
-    background-color: #026e50;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
   .titleImgSecond {
+    background-image: url("img/titlepicture02.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 10%;
-    background-color: #815a00;
+    margin-bottom: 2rem;
   }
 
   .menuTabName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 4%;
-    background-color: #0062ff;
+    padding-left: 2rem;
   }
 
   .dishDisplay {
@@ -80,7 +102,16 @@ main {
     justify-content: space-between;
     display: flex;
     margin: 2rem;
-    background-color: #ffbf00;
+    border: 2px solid #ffbf00 ;
+  }
+
+  .dishDetails{
+    font-size: 1.6rem;
+  }
+
+  .dishPrice{
+    color: orange;
+    font-size: 1.6rem;
   }
 
   .dishInfo {
@@ -88,10 +119,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #000000;
     padding: 2rem;
     height: 15%;
-    background-color: #ffbf00;
   }
 
   .addDish {
