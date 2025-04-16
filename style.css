@@ -47,6 +47,10 @@ main {
   }
 
   .titleImgMain {
+    background-image: url("img/titlepicture01.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 20%;
     background-color: #000000;
   }

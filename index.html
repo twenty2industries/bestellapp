@@ -6,31 +6,13 @@
     <link rel="stylesheet" href="style.css" />
     <title>Bestellapp</title>
   </head>
-  <body>
+  <body onload="init()">
     <header>
       <img src="assets/icons/Logo/Logo.png" class="websiteLogo" />
     </header>
     <main>
       <div class="contentArea" id="content-area">
-        <div class="titleImgMain"><h1>Titelbild</h1></div>
-        <div class="infoSection" id="info-section">
-          <h1>GeschäftInfo & Bewertung</h1>
-        </div>
-        <div class="menuTabs" id="menu-tabs"><h1>TAB NAV</h1></div>
-        <div class="titleImgSecond">
-          <h1>TAB NAV TITELBILD (HAUPTGERICHT)</h1>
-        </div>
-        <div class="menuTabName" id="menuTabName"><h1>TAB NAV NAME</h1></div>
-        <div class="dishDisplay" id="dish-display">
-          <div class="dishInfo" id="dish-info">
-            <span class="dishName" id="dish-name">DISHNAME</span>
-            <span class="dishDetails" id="dish-details">DISHNAME</span>
-            <span class="dishPrice" id="dish-price">DISHNAME</span>
-          </div>
-          <div class="addDish" id="add-dish">+</div>
-        </div>
       </div>
-
       <div class="shoppingCartContainer" id="shopping-cart">
         <div class="shoppingCart">
           <span><h2>WARENKORB</h2></span>
@@ -54,8 +36,8 @@
         </div>
       </div>
     </main>
-
-    <footer></footer>
+<!-- 
+    <footer></footer> -->
   </body>
   <script src="scripts/db.js"></script>
   <script src="scripts/template.js"></script>
