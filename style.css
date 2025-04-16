@@ -39,7 +39,7 @@ main {
 
   .shoppingCartContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: space-between;
     border: 1rem solid #df0000;
     background-color: chocolate;
@@ -144,11 +144,6 @@ main {
   height: 100%;
   background-color: #9d9d9d;
 
-  button {
-    width: 4rem;
-    height: 4rem;
-  }
-
   .itemCartCounter {
     padding: 0rem 2rem;
   }
@@ -162,6 +157,17 @@ main {
     height: 4rem;
   }
 }
+
+button {
+  width: 4rem;
+  height: 4rem;
+}
+button:hover{
+  cursor: pointer;
+  background-color: #ff8008;
+  transition: ease-in-out 0.3s;
+}
+
 
 .totalArea {
   padding: 2rem 2rem;

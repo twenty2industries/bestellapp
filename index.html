@@ -7,36 +7,15 @@
     <title>Bestellapp</title>
   </head>
   <body onload="init()">
-    <header>
-      <img src="assets/icons/Logo/Logo.png" class="websiteLogo" />
+    <header id="header">
     </header>
     <main>
-      <div class="contentArea" id="content-area">
-      </div>
+      <div class="contentArea" id="content-area"></div>
       <div class="shoppingCartContainer" id="shopping-cart">
-        <div class="shoppingCart">
-          <span><h2>WARENKORB</h2></span>
-          <div class="hyphen"></div>
-          <div class="cartItems" id="cart-items">
-            <div class="dishnameCart" id="dishname-cart">DISHNAME-CART</div>
-            <div class="cartFunctions" id="cart-functions">
-              <button>-</button>
-              <span class="itemCartCounter" id="item-cart-counter">ANZAHL</span>
-              <button>+</button>
-              <span class="itemCartPrice" id="item-cart-price">PREIS</span>
-              <button class="deleteAllButton">DELETE</button>
-            </div>
-          </div>
-          <div class="hyphen"></div>
-        </div>
-        <div class="totalArea" id="total-area">
-          <span>Zwischensumme:</span>
-          <span>Lieferkosten:</span>
-          <span>Gesamt:</span>
-        </div>
+        <div class="totalArea" id="total-area"></div>
       </div>
     </main>
-<!-- 
+    <!-- 
     <footer></footer> -->
   </body>
   <script src="scripts/db.js"></script>
