@@ -1,0 +1,108 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  font-family: "Raleway", sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  background-color: #ff8008;
+  width: 100%;
+  height: 8rem;
+  padding-left: 4rem;
+
+  .websiteLogo {
+    width: 16rem;
+  }
+}
+
+main {
+  color: wheat;
+  font-size: 1.6rem;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+
+  .contentArea {
+    border: 1rem solid #ffffff;
+    width: 70%;
+  }
+
+  .shoppingCart {
+    border: 1rem solid #df0000;
+    width: 30%;
+  }
+
+  .titleImgMain {
+    height: 20%;
+    background-color: #000000;
+  }
+
+  .infoSection {
+    height: 10%;
+    background-color: #a12121;
+  }
+
+  .menuTabs {
+    height: 4%;
+    background-color: #026e50;
+  }
+
+  .titleImgSecond {
+    height: 10%;
+    background-color: #815a00;
+  }
+
+  .menuTabName {
+    height: 4%;
+    background-color: #0062ff;
+  }
+
+  .dishDisplay{
+    font-size: 2.4rem;
+    justify-content: space-between;
+    display: flex;
+    margin: 2rem;
+    background-color: #ffbf00;
+  }
+  .dishInfo{
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #000000;
+    padding: 2rem;
+    height: 15%;
+    background-color: #ffbf00;
+  }
+  .addDish{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid white;
+    margin: 1rem;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #ff8008;
+  width: 100%;
+  height: 10rem;
+  font-size: 1.6rem;
+}
