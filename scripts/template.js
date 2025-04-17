@@ -1,7 +1,6 @@
 function renderAll() {
   returnContent();
   renderContent();
-  returnShoppingcartContainer();
   returnTotalArea();
   returnHeader();
 }
@@ -11,22 +10,19 @@ function returnHeader() {
   return (headerRef.innerHTML += `      <img src="assets/icons/Logo/Logo.png" class="websiteLogo" />`);
 }
 
-function returnShoppingcartContainer() {
-  const shoppingCarContainerRef = document.getElementById("shopping-cart");
-  return (shoppingCarContainerRef.innerHTML += `<div class="shoppingCart">
-          <span><h2>WARENKORB</h2></span>
-          <div class="hyphen"></div>
-          <div class="cartItems" id="cart-items">
-            <div class="dishnameCart" id="dishname-cart">DISHNAME-CART</div>
-            <div class="cartFunctions" id="cart-functions">
+function returnShoppingcartContainer(addedDishIndex) {
+  const shoppingCarContainerRef = document.getElementById("shopping-cart-container");
+  return (shoppingCarContainerRef.innerHTML += `<div class="shoppingCart" id="shopping-cart-${addedDishIndex}">
+          <div class="cartItems" id="cart-items-${addedDishIndex}">
+            <div class="dishnameCart" id="dishname-cart-${addedDishIndex}">DISHNAME-CART</div>
+            <div class="cartFunctions" id="cart-functions-${addedDishIndex}">
               <button>-</button>
-              <span class="itemCartCounter" id="item-cart-counter">ANZAHL</span>
+              <span class="itemCartCounter" id="item-cart-counter-${addedDishIndex}">${myDishes[addedDishIndex].amount}</span>
               <button>+</button>
-              <span class="itemCartPrice" id="item-cart-price">PREIS</span>
+              <span class="itemCartPrice" id="item-cart-price-${addedDishIndex}">PREIS</span>
               <button class="deleteAllButton">DELETE</button>
             </div>
           </div>
-          <div class="hyphen"></div>
         </div>`);
 }
 
@@ -52,7 +48,7 @@ function returnDishes(index) {
             <span class="dishDetails" id="dish-details-${index}">${myDishes[index].description}</span>
             <span class="dishPrice" id="dish-price-${index}">${myDishes[index].price} €</span>
           </div>
-          <button class="addDish" id="add-dish">+</button>
+          <button class="addDish" id="add-dish" onclick="itemCartCounter(${index})">+</button>
         </div>`;
 }
 
@@ -62,3 +58,23 @@ function returnTotalArea() {
           <span>Lieferkosten:</span>
           <span>Gesamt:</span>`);
 }
+
+
+/* function returnShoppingcartContainer() {
+  const shoppingCarContainerRef = document.getElementById("shopping-cart");
+  return (shoppingCarContainerRef.innerHTML += `<div class="shoppingCart">
+          <span><h2>WARENKORB</h2></span>
+          <div class="hyphen"></div>
+          <div class="cartItems" id="cart-items">
+            <div class="dishnameCart" id="dishname-cart">DISHNAME-CART</div>
+            <div class="cartFunctions" id="cart-functions">
+              <button>-</button>
+              <span class="itemCartCounter" id="item-cart-counter">ANZAHL</span>
+              <button>+</button>
+              <span class="itemCartPrice" id="item-cart-price">PREIS</span>
+              <button class="deleteAllButton">DELETE</button>
+            </div>
+          </div>
+          <div class="hyphen"></div>
+        </div>`);
+} */

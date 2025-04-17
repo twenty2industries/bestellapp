@@ -118,7 +118,6 @@ main {
     gap: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 2rem;
     height: 15%;
   }
@@ -136,7 +135,7 @@ main {
 
   .shoppingCart {
     display: flex;
-    padding: 3rem 1rem;
+    padding: 1rem 1rem;
     align-items: center;
     flex-direction: column;
 
@@ -151,7 +150,6 @@ main {
   .cartItems {
     display: flex;
     flex-direction: column;
-    margin: 4rem 0rem;
     width: 100%;
 
     .dishnameCart {
