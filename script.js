@@ -33,9 +33,16 @@ function init() {
 
 function renderContent() {
   const contentRef = document.getElementById("content-area");
-  for (let index = 0; index < myDishes.length; index++) {
-    const element = myDishes[index];
+  for (let i = 0; i < myDishes.length; i++) {
+    const element = myDishes[i];
     console.log(element);
-    contentRef.innerHTML += returnDishes(index);
+    contentRef.innerHTML += returnDishes(i);
+    fixPrice(i)
   }
+}
+
+function fixPrice(i) {
+  const priceRef = document.getElementById(`dish-price-${i}`);
+  let price = priceRef.innerHTML.replace(",", ".");
+  priceRef.innerHTML = parseFloat(price).toFixed(2).replace(".", ",") + ` EUR`;
 }

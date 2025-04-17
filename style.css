@@ -64,7 +64,7 @@ main {
     padding: 0rem 2rem;
     height: 10%;
 
-    span{
+    span {
       color: orange;
     }
   }
@@ -102,14 +102,14 @@ main {
     justify-content: space-between;
     display: flex;
     margin: 2rem;
-    border: 2px solid #ffbf00 ;
+    border: 2px solid #ffbf00;
   }
 
-  .dishDetails{
+  .dishDetails {
     font-size: 1.6rem;
   }
 
-  .dishPrice{
+  .dishPrice {
     color: orange;
     font-size: 1.6rem;
   }
@@ -191,12 +191,12 @@ button {
   width: 4rem;
   height: 4rem;
 }
-button:hover{
+
+button:hover {
   cursor: pointer;
   background-color: #ff8008;
   transition: ease-in-out 0.3s;
 }
-
 
 .totalArea {
   padding: 2rem 2rem;
@@ -210,14 +210,12 @@ button:hover{
   background-color: cadetblue;
 }
 
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: #ff8008;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
+  color: white;
+  text-align: center;
   height: 10rem;
-  font-size: 1.6rem;
 }
