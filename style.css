@@ -153,6 +153,7 @@ main {
     width: 100%;
 
     .dishnameCart {
+      font-weight: bold;
       padding: 0rem 2rem;
       display: flex;
       align-items: center;
