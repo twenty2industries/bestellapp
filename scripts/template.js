@@ -16,9 +16,9 @@ function returnShoppingcartContainer(addedDishIndex) {
           <div class="cartItems" id="cart-items-${addedDishIndex}">
             <div class="dishnameCart" id="dishname-cart-${addedDishIndex}">${myDishes[addedDishIndex].name}</div>
             <div class="cartFunctions" id="cart-functions-${addedDishIndex}">
-              <button>-</button>
+              <button onclick="removeItem(${addedDishIndex})">-</button>
               <span class="itemCartCounter" id="item-cart-counter-${addedDishIndex}">${myDishes[addedDishIndex].amount}</span>
-              <button>+</button>
+              <button onclick="itemCartCounter(${addedDishIndex})")>+</button>
               <span class="itemCartPrice" id="item-cart-price-${addedDishIndex}">${myDishes[addedDishIndex].cartprice}</span>
               <button class="deleteAllButton">DELETE</button>
             </div>

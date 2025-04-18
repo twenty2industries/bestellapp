@@ -50,24 +50,16 @@ function renderContent() {
 
 function itemCartCounter(index) {
   myDishes[index].amount++;
-  myDishes[index].cartprice += parseFloat(myDishes[index].price);
+  myDishes[index].cartprice += myDishes[index].price;
   console.log(myDishes[index].cartprice);
-  
   console.log(myDishes[index]);
   if (myDishes[index].amount == 1) {
     returnShoppingcartContainer(index);
-    const amountRef = document.getElementById(`item-cart-counter-${index}`);
-    const cartPriceRef = document.getElementById(`item-cart-price-${index}`);
-    amountRef.innerHTML = "";
-    amountRef.innerHTML += myDishes[index].amount;
-    cartPriceRef.innerHTML += myDishes[index].cartprice;
+    getAmountCart(index);
+    getCartPrice(index);
   } else{
-    const amountRef = document.getElementById(`item-cart-counter-${index}`);
-    const cartPriceRef = document.getElementById(`item-cart-price-${index}`);
-    amountRef.innerHTML = "";
-    amountRef.innerHTML += myDishes[index].amount;
-    cartPriceRef.innerHTML = "";
-    cartPriceRef.innerHTML += myDishes[index].cartprice;
+    getAmountCart(index);
+    getCartPrice(index);
   }
   fixPriceShoppingCart(index)
 }
@@ -82,4 +74,28 @@ function fixPriceShoppingCart(shoppingPriceIndex) {
   const cartPriceRef = document.getElementById(`item-cart-price-${shoppingPriceIndex}`);
   let price = cartPriceRef.innerHTML.replace(",", ".");
   cartPriceRef.innerHTML = parseFloat(price).toFixed(2).replace(".", ",") + ` €`;
+}
+
+function getAmountCart(amountindex) {
+  const amountRef = document.getElementById(`item-cart-counter-${amountindex}`);
+  amountRef.innerHTML = "";
+  amountRef.innerHTML += myDishes[amountindex].amount;
+}
+
+function getCartPrice(cartPriceIndex) {
+  const cartPriceRef = document.getElementById(`item-cart-price-${cartPriceIndex}`);
+  cartPriceRef.innerHTML = "";
+  cartPriceRef.innerHTML += myDishes[cartPriceIndex].cartprice;
+}
+
+function removeItem(removeItemIndex) {
+  const cartPriceRef = document.getElementById(`item-cart-price-${removeItemIndex}`);
+  const amountRef = document.getElementById(`item-cart-counter-${removeItemIndex}`);
+  myDishes[removeItemIndex].amount--;
+  myDishes[removeItemIndex].cartprice -= myDishes[removeItemIndex].price;
+  amountRef.innerHTML = "";
+  amountRef.innerHTML += myDishes[removeItemIndex].amount;
+  cartPriceRef.innerHTML = "";
+  cartPriceRef.innerHTML += myDishes[removeItemIndex].cartprice;
+  fixPriceShoppingCart(removeItemIndex);
 }
