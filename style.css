@@ -40,10 +40,10 @@ main {
 
   .shoppingCartContainer {
     display: flex;
+    color: black;
     flex-direction: column-reverse;
     justify-content: space-between;
-    border: 1rem solid #df0000;
-    background-color: chocolate;
+    border: 0.5rem solid #000000;
     width: 30%;
   }
 
@@ -156,9 +156,11 @@ main {
       padding: 0rem 2rem;
       display: flex;
       align-items: center;
-      height: 30%;
-      background-color: #000000;
-      width: 100%;
+      justify-content: center;
+      height: 6rem;
+      border: 2px solid #ffbf00;
+      border-radius: 10px;
+      margin-bottom: 0.1rem;
     }
   }
 }
@@ -169,7 +171,9 @@ main {
   align-items: center;
   padding: 2rem;
   height: 100%;
-  background-color: #9d9d9d;
+  border: 2px solid #ffbf00;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
 
   .itemCartCounter {
     padding: 0rem 2rem;
