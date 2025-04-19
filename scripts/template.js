@@ -4,7 +4,6 @@ function renderAll() {
   returnTotalArea();
   fixPriceDelivery()
   fixPriceSubtotal();
-
   returnHeader();
 }
 
@@ -60,5 +59,5 @@ function returnTotalArea() {
   return (totalAreaRef.innerHTML += `          
           <span> Zwischensumme: <span id="subtotal">${subtotal}</span></span>
           <span> Lieferkosten: <span id="delivery-cost">${deliveryCost}</span></span>
-          <span>Gesamt:</span>`);
-}
+          <span> Gesamt: <span id="total-cost">${totalCost}</span></span>`)
+        }

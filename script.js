@@ -38,6 +38,7 @@ const myDishes = [
 
 let deliveryCost = 2.5;
 let subtotal = 0;
+let totalCost = 0;
 
 function init() {
   renderAll();
@@ -59,10 +60,12 @@ function itemCartCounter(index) {
     getAmountCart(index);
     getCartPrice(index);
     getSubtotal(index);
+    getTotalcost();
   } else{
     getAmountCart(index);
     getCartPrice(index);
     getSubtotal(index);
+    getTotalcost();
   }
   fixPriceShoppingCart(index)
 }
@@ -81,7 +84,9 @@ function fixPriceShoppingCart(shoppingPriceIndex) {
 
 function fixPriceDelivery() {
   const deliveryCostRef = document.getElementById(`delivery-cost`);
+  const totalCostRef = document.getElementById(`total-cost`);
   deliveryCostRef.innerHTML = parseFloat(deliveryCost).toFixed(2).replace(".", ",") + ` €`;
+  totalCostRef.innerHTML = parseFloat(totalCost).toFixed(2).replace(".", ",") + ` €`;
 }
 
 function fixPriceSubtotal() {
@@ -119,10 +124,18 @@ function removeItem(removeItemIndex) {
 }
 
 function deleteItemFromCart(deleteItemIndex) {
+  subtotal -= myDishes[deleteItemIndex].cartprice;
+  totalCost -= myDishes[deleteItemIndex].cartprice;
   myDishes[deleteItemIndex].cartprice = 0;
   myDishes[deleteItemIndex].amount = 0;
   const cartPriceRef = document.getElementById(`shopping-cart-${deleteItemIndex}`);
   cartPriceRef.remove();
+  const subTotalRef = document.getElementById('subtotal');
+  subTotalRef.innerHTML = subtotal;
+  const totalREf = document.getElementById('total-cost');
+  totalREf.innerHTML = totalCost;
+  fixPriceSubtotal();
+  fixPriceDelivery();
 }
 
 function getSubtotal(subtotalIndex) {
@@ -130,8 +143,6 @@ function getSubtotal(subtotalIndex) {
     const subtotalRef = document.getElementById('subtotal')
     subtotal += myDishes[subtotalIndex].price;
     subtotalRef.innerHTML += subtotal;
-    console.log(myDishes[subtotalIndex].price);
-    
     fixPriceSubtotal();
 }
 
@@ -140,7 +151,14 @@ function removeSubtotal(subtotalIndex) {
   const subtotalRef = document.getElementById('subtotal')
   subtotal -= myDishes[subtotalIndex].price;
   subtotalRef.innerHTML -= subtotal;
-  console.log(myDishes[subtotalIndex].price);
-  
+  getTotalcost();
   fixPriceSubtotal();
+}
+
+function getTotalcost() {
+  const totalCostRef = document.getElementById('total-cost');
+  totalCost = subtotal + deliveryCost;
+  totalCostRef.innerHTML = '';
+  totalCostRef.innerHTML = totalCost;  
+  fixPriceDelivery()
 }
