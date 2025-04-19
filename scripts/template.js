@@ -2,6 +2,9 @@ function renderAll() {
   returnContent();
   renderContent();
   returnTotalArea();
+  fixPriceDelivery()
+  fixPriceSubtotal();
+
   returnHeader();
 }
 
@@ -20,7 +23,7 @@ function returnShoppingcartContainer(addedDishIndex) {
               <span class="itemCartCounter" id="item-cart-counter-${addedDishIndex}">${myDishes[addedDishIndex].amount}</span>
               <button onclick="itemCartCounter(${addedDishIndex})")>+</button>
               <span class="itemCartPrice" id="item-cart-price-${addedDishIndex}">${myDishes[addedDishIndex].cartprice}</span>
-              <button class="deleteAllButton">DELETE</button>
+              <button class="deleteAllButton" onclick="deleteItemFromCart(${addedDishIndex})">DELETE</button>
             </div>
           </div>
         </div>`);
@@ -54,7 +57,8 @@ function returnDishes(index) {
 
 function returnTotalArea() {
   const totalAreaRef = document.getElementById("total-area");
-  return (totalAreaRef.innerHTML += `          <span>Zwischensumme:</span>
-          <span>Lieferkosten:</span>
+  return (totalAreaRef.innerHTML += `          
+          <span> Zwischensumme: <span id="subtotal">${subtotal}</span></span>
+          <span> Lieferkosten: <span id="delivery-cost">${deliveryCost}</span></span>
           <span>Gesamt:</span>`);
 }

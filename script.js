@@ -11,7 +11,7 @@ const myDishes = [
     price: 9.5,
     description: "Pizza mit Tomatensauce, Mozzarella und pikanter Salami",
     amount: 0,
-    cartprice: 0,
+    cartprice:0,
   },
   {
     name: "Pizza Funghi",
@@ -36,6 +36,9 @@ const myDishes = [
   },
 ];
 
+let deliveryCost = 2.5;
+let subtotal = 0;
+
 function init() {
   renderAll();
 }
@@ -51,15 +54,15 @@ function renderContent() {
 function itemCartCounter(index) {
   myDishes[index].amount++;
   myDishes[index].cartprice += myDishes[index].price;
-  console.log(myDishes[index].cartprice);
-  console.log(myDishes[index]);
   if (myDishes[index].amount == 1) {
     returnShoppingcartContainer(index);
     getAmountCart(index);
     getCartPrice(index);
+    getSubtotal(index);
   } else{
     getAmountCart(index);
     getCartPrice(index);
+    getSubtotal(index);
   }
   fixPriceShoppingCart(index)
 }
@@ -76,6 +79,16 @@ function fixPriceShoppingCart(shoppingPriceIndex) {
   cartPriceRef.innerHTML = parseFloat(price).toFixed(2).replace(".", ",") + ` €`;
 }
 
+function fixPriceDelivery() {
+  const deliveryCostRef = document.getElementById(`delivery-cost`);
+  deliveryCostRef.innerHTML = parseFloat(deliveryCost).toFixed(2).replace(".", ",") + ` €`;
+}
+
+function fixPriceSubtotal() {
+  const subtotalRef = document.getElementById(`subtotal`);
+  subtotalRef.innerHTML = parseFloat(subtotal).toFixed(2).replace(".", ",") + ` €`;
+}
+
 function getAmountCart(amountindex) {
   const amountRef = document.getElementById(`item-cart-counter-${amountindex}`);
   amountRef.innerHTML = "";
@@ -89,13 +102,45 @@ function getCartPrice(cartPriceIndex) {
 }
 
 function removeItem(removeItemIndex) {
-  const cartPriceRef = document.getElementById(`item-cart-price-${removeItemIndex}`);
-  const amountRef = document.getElementById(`item-cart-counter-${removeItemIndex}`);
-  myDishes[removeItemIndex].amount--;
-  myDishes[removeItemIndex].cartprice -= myDishes[removeItemIndex].price;
-  amountRef.innerHTML = "";
-  amountRef.innerHTML += myDishes[removeItemIndex].amount;
-  cartPriceRef.innerHTML = "";
-  cartPriceRef.innerHTML += myDishes[removeItemIndex].cartprice;
-  fixPriceShoppingCart(removeItemIndex);
+  if (myDishes[removeItemIndex].amount !== 0) {
+    const cartPriceRef = document.getElementById(`item-cart-price-${removeItemIndex}`);
+    const amountRef = document.getElementById(`item-cart-counter-${removeItemIndex}`);
+    myDishes[removeItemIndex].amount--;
+    myDishes[removeItemIndex].cartprice -= myDishes[removeItemIndex].price;
+    amountRef.innerHTML = "";
+    amountRef.innerHTML += myDishes[removeItemIndex].amount;
+    cartPriceRef.innerHTML = "";
+    cartPriceRef.innerHTML += myDishes[removeItemIndex].cartprice;
+    fixPriceShoppingCart(removeItemIndex);
+    removeSubtotal(removeItemIndex);
+  } if (myDishes[removeItemIndex].amount == 0) {
+    deleteItemFromCart(removeItemIndex);
+  }
+}
+
+function deleteItemFromCart(deleteItemIndex) {
+  myDishes[deleteItemIndex].cartprice = 0;
+  myDishes[deleteItemIndex].amount = 0;
+  const cartPriceRef = document.getElementById(`shopping-cart-${deleteItemIndex}`);
+  cartPriceRef.remove();
+}
+
+function getSubtotal(subtotalIndex) {
+    const element = myDishes[subtotalIndex].price;
+    const subtotalRef = document.getElementById('subtotal')
+    subtotal += myDishes[subtotalIndex].price;
+    subtotalRef.innerHTML += subtotal;
+    console.log(myDishes[subtotalIndex].price);
+    
+    fixPriceSubtotal();
+}
+
+function removeSubtotal(subtotalIndex) {
+  const element = myDishes[subtotalIndex].price;
+  const subtotalRef = document.getElementById('subtotal')
+  subtotal -= myDishes[subtotalIndex].price;
+  subtotalRef.innerHTML -= subtotal;
+  console.log(myDishes[subtotalIndex].price);
+  
+  fixPriceSubtotal();
 }
