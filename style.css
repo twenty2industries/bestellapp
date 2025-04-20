@@ -58,14 +58,26 @@ main {
     z-index: 10;
   }
 
-
-
   .titleImgMain {
+    position: relative;
     background-image: url("img/titlepicture01.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 30rem;
+  }
+
+  .logo {
+    position: relative;
+    height: 15rem;
+    border-radius: 40px;
+    background: url(assets/icons/Favicon/apple-touch-icon.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 23;
+    top: -3rem;
+    margin-bottom: -4rem;
   }
 
   .infoSection {
@@ -231,6 +243,11 @@ main {
   flex-wrap: wrap;
   display: flex;
   width: 100%;
+
+  .orderButton {
+    width: 100%;
+    background-color: antiquewhite;
+  }
 }
 
 footer {
@@ -252,6 +269,35 @@ footer {
 .mobileCheckout {
   display: none;
 }
+
+.d_none {
+  display: none;
+}
+
+.orderConfirmation {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 3.6rem;
+  width: 50rem;
+  height: 20rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ff8008;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  text-align: center;
+}
+
+.d_none {
+  display: none;
+}
+
 
 @media (min-width: 976px) {
   main .shoppingCartContainer {
@@ -289,7 +335,7 @@ footer {
     padding-right: 6rem;
   }
 
-  .mobileCheckout:hover{
+  .mobileCheckout:hover {
     cursor: pointer;
     box-shadow: inset;
   }
@@ -297,8 +343,30 @@ footer {
   .menuTabsDisplay {
     justify-content: space-between;
   }
+
+  .logo {
+    display: none;
+  }
 }
 
-.d_none{
-  display: none;
+@media (max-width: 523px) {
+  .orderConfirmation {
+    font-size: 2.4rem;
+    width: 40rem;
+    height: 10rem;
+  }
+}
+
+@media (max-width: 417px) {
+  main {
+    .shoppingCartContainer {
+      padding: 0rem 1rem;
+    }
+  }
+
+  .orderConfirmation {
+    font-size: 2rem;
+    width: 30rem;
+    height: 10rem;
+  }
 }

@@ -38,7 +38,7 @@ const myDishes = [
 
 let deliveryCost = 2.5;
 let subtotal = 0;
-let totalCost = 0;
+let totalCost = deliveryCost;
 
 function init() {
   renderAll();
@@ -166,4 +166,40 @@ function getTotalcost() {
 function toggleCartMobile() {
   const cart = document.querySelector('.shoppingCartContainer');
   cart.classList.toggle('d_none');
+}
+
+function placeOrder() {
+  if (subtotal !== 0) {
+    clearCart();
+    const confirmation = document.getElementById('order-confirmation');
+    confirmation.classList.remove('d_none'); 
+  }
+  else{
+    const confirmation = document.getElementById('order-not-confirmed');
+    confirmation.classList.remove('d_none'); 
+  }
+}
+
+function clearCart() {
+  for (let i = 0; i < myDishes.length; i++) {
+      myDishes[i].amount = 0;
+      myDishes[i].cartprice = 0;
+      const cartItem = document.getElementById(`shopping-cart-${i}`);
+      if (cartItem) {
+          cartItem.remove();
+      }
+  }
+    subtotal = 0;
+  totalCost = deliveryCost;
+  const subTotalRef = document.getElementById('subtotal');
+  const totalRef = document.getElementById('total-cost');
+  subTotalRef.innerHTML = subtotal.toFixed(2).replace(".", ",") + " €";
+  totalRef.innerHTML = totalCost.toFixed(2).replace(".", ",") + " €";
+}
+
+function closeDisplay() {
+  const confirmation = document.getElementById('order-confirmation');
+  const notConfirmed = document.getElementById('order-not-confirmed');
+  notConfirmed.classList.add('d_none');
+  confirmation.classList.add('d_none');
 }

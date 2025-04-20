@@ -2,7 +2,7 @@ function renderAll() {
   returnContent();
   renderContent();
   returnTotalArea();
-  fixPriceDelivery()
+  fixPriceDelivery();
   fixPriceSubtotal();
   returnHeader();
 }
@@ -31,6 +31,7 @@ function returnShoppingcartContainer(addedDishIndex) {
 function returnContent() {
   const contentRef = document.getElementById("content-area");
   return (contentRef.innerHTML += `        <div class="titleImgMain"></div>
+    <div class="logo"></div>
         <div class="infoSection" id="info-section">
           <h2>Twenty2Kitchen</h2>
           <span> Bewertung (4.2 von 5 Sternen)</span>
@@ -60,5 +61,15 @@ function returnTotalArea() {
   return (totalAreaRef.innerHTML += `          
           <span> Zwischensumme: <span id="subtotal">${subtotal}</span></span>
           <span> Lieferkosten: <span id="delivery-cost">${deliveryCost}</span></span>
-          <span> Gesamt: <span id="total-cost">${totalCost}</span></span>`)
-        }
+          <span> Gesamt: <span id="total-cost">${totalCost}</span></span>
+          <div><button class="orderButton" onclick="placeOrder()">Jetzt bestellen</div>
+          <div id="order-confirmation" class="orderConfirmation d_none">
+    <p>Vielen Dank! Sie haben eine Testbestellung vorgenommen.</p>
+              <button onclick="closeDisplay()">X</button>
+</div>
+          <div id="order-not-confirmed" class="orderConfirmation d_none">
+    <p>Ihr Warenkorb ist leer!</p>
+              <button onclick="closeDisplay()">X</button>
+</div>
+`);
+}
