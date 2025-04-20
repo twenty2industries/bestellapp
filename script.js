@@ -162,3 +162,8 @@ function getTotalcost() {
   totalCostRef.innerHTML = totalCost;  
   fixPriceDelivery()
 }
+
+function toggleCartMobile() {
+  const cart = document.querySelector('.shoppingCartContainer');
+  cart.classList.toggle('d_none');
+}

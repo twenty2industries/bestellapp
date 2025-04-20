@@ -29,30 +29,43 @@ main {
   color: wheat;
   font-size: 1.6rem;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  padding-bottom: 2rem;
   width: 100%;
 
   .contentArea {
+    display: flex;
+    flex-direction: column;
     color: black;
     border: 1rem solid #ffffff;
     width: 70%;
   }
 
   .shoppingCartContainer {
-    display: flex;
     color: black;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
-    border: 0.5rem solid #000000;
+    border: 2px solid #ffbf00;
+    margin-right: 0.5rem;
+    margin-top: 0.8rem;
     width: 30%;
+
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+    background-color: white;
+    z-index: 10;
   }
+
+
 
   .titleImgMain {
     background-image: url("img/titlepicture01.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 20%;
+    height: 30rem;
   }
 
   .infoSection {
@@ -145,6 +158,20 @@ main {
       width: 100%;
       margin-top: 1rem;
     }
+
+  }
+
+  button {
+    background-color: white;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #ff8008;
+    transition: ease-in-out 0.3s;
   }
 
   .cartItems {
@@ -158,8 +185,7 @@ main {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 6rem;
-      border: 2px solid #ffbf00;
+      height: 3rem;
       border-radius: 10px;
       margin-bottom: 0.1rem;
     }
@@ -167,6 +193,7 @@ main {
 }
 
 .cartFunctions {
+  font-size: 1.2rem;
   justify-content: space-between;
   display: flex;
   align-items: center;
@@ -177,48 +204,101 @@ main {
   margin-bottom: 0.5rem;
 
   .itemCartCounter {
-    padding: 0rem 2rem;
+    padding: 0rem 0.5rem;
   }
 
   .itemCartPrice {
-    padding: 0rem 2rem;
+    padding: 0rem 0.5rem;
   }
 
   .deleteAllButton {
-    width: 8rem;
-    height: 4rem;
+    background-image: url("assets/icons/illustration/garbage.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border: none;
   }
-}
-
-button {
-  width: 4rem;
-  height: 4rem;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #ff8008;
-  transition: ease-in-out 0.3s;
 }
 
 .totalArea {
   padding: 2rem 2rem;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   flex-direction: column;
   gap: 3rem;
   flex-wrap: wrap;
   display: flex;
   width: 100%;
-  height: 23%;
-  background-color: cadetblue;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff8008;
+  background-image: url("assets/icons/Favicon/android-chrome-512x512.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   color: white;
   text-align: center;
   height: 10rem;
+  line-height: 10rem;
+  font-size: 1.6rem;
+}
+
+.mobileCheckout {
+  display: none;
+}
+
+@media (min-width: 976px) {
+  main .shoppingCartContainer {
+    display: flex;
+  }
+}
+
+@media (max-width: 975px) {
+  main {
+    .shoppingCartContainer {
+      padding: 0rem 8rem;
+      width: 100%;
+      height: 19rem;
+      position: absolute;
+      top: -0.7rem;
+      background-color: rgb(182, 182, 182);
+      overflow-y: auto;
+    }
+
+    .contentArea {
+      width: 100%;
+    }
+  }
+
+  .mobileCheckout {
+    background-image: url("assets/icons/illustration/mobileCheckoutCart.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    background-color: #ff8008;
+    border-radius: 50px;
+    padding-right: 6rem;
+  }
+
+  .mobileCheckout:hover{
+    cursor: pointer;
+    box-shadow: inset;
+  }
+
+  .menuTabsDisplay {
+    justify-content: space-between;
+  }
+}
+
+.d_none{
+  display: none;
 }

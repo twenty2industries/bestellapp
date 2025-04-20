@@ -13,7 +13,7 @@ function returnHeader() {
 }
 
 function returnShoppingcartContainer(addedDishIndex) {
-  const shoppingCarContainerRef = document.getElementById("shopping-cart-container");
+  const shoppingCarContainerRef = document.getElementById("checkout-area");
   return (shoppingCarContainerRef.innerHTML += `<div class="shoppingCart" id="shopping-cart-${addedDishIndex}">
           <div class="cartItems" id="cart-items-${addedDishIndex}">
             <div class="dishnameCart" id="dishname-cart-${addedDishIndex}">${myDishes[addedDishIndex].name}</div>
@@ -22,7 +22,7 @@ function returnShoppingcartContainer(addedDishIndex) {
               <span class="itemCartCounter" id="item-cart-counter-${addedDishIndex}">${myDishes[addedDishIndex].amount}</span>
               <button onclick="itemCartCounter(${addedDishIndex})")>+</button>
               <span class="itemCartPrice" id="item-cart-price-${addedDishIndex}">${myDishes[addedDishIndex].cartprice}</span>
-              <button class="deleteAllButton" onclick="deleteItemFromCart(${addedDishIndex})">DELETE</button>
+              <button class="deleteAllButton" onclick="deleteItemFromCart(${addedDishIndex})"></button>
             </div>
           </div>
         </div>`);
@@ -38,6 +38,7 @@ function returnContent() {
         <div class="menuTabsDisplay">
         <div class="menuTabs">Hauptgerichte</div>
         <div class="menuTabs">Beilagen</div>
+        <div class="mobileCheckout" onclick="toggleCartMobile()"></div>
         </div>
         <div class="titleImgSecond"></div>
         <div class="menuTabName"><h2>Hauptgerichte</h2></div>`);
