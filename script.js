@@ -2,16 +2,17 @@ const myDishes = [
   {
     name: "Pizza Margherita",
     price: 8.5,
-    description:"Klassische Pizza mit Tomatensauce, Mozzarella und frischem Basilikum",
-    amount: 0, //amount goes up if onclick function is triggered, to show the amount of the dish in the shoppingcart
-    cartprice: 0, //if added more than 1 time the key price: stays 8.5 and the cartprice adds up
+    description:
+      "Klassische Pizza mit Tomatensauce, Mozzarella und frischem Basilikum",
+    amount: 0,
+    cartprice: 0,
   },
   {
     name: "Pizza Salami",
     price: 9.5,
     description: "Pizza mit Tomatensauce, Mozzarella und pikanter Salami",
     amount: 0,
-    cartprice:0,
+    cartprice: 0,
   },
   {
     name: "Pizza Funghi",
@@ -57,17 +58,18 @@ function itemCartCounter(index) {
   myDishes[index].cartprice += myDishes[index].price;
   if (myDishes[index].amount == 1) {
     returnShoppingcartContainer(index);
-    getAmountCart(index);
-    getCartPrice(index);
-    getSubtotal(index);
-    getTotalcost();
-  } else{
-    getAmountCart(index);
-    getCartPrice(index);
-    getSubtotal(index);
-    getTotalcost();
+    getCartDetails(index);
+  } else {
+    getCartDetails(index);
   }
-  fixPriceShoppingCart(index)
+  fixPriceShoppingCart(index);
+}
+
+function getCartDetails(detailsIndex) {
+  getAmountCart(detailsIndex);
+  getCartPrice(detailsIndex);
+  getSubtotal(detailsIndex);
+  getTotalcost();
 }
 
 function fixPrice(i) {
@@ -79,19 +81,23 @@ function fixPrice(i) {
 function fixPriceShoppingCart(shoppingPriceIndex) {
   const cartPriceRef = document.getElementById(`item-cart-price-${shoppingPriceIndex}`);
   let price = cartPriceRef.innerHTML.replace(",", ".");
-  cartPriceRef.innerHTML = parseFloat(price).toFixed(2).replace(".", ",") + ` €`;
+  cartPriceRef.innerHTML =
+    parseFloat(price).toFixed(2).replace(".", ",") + ` €`;
 }
 
 function fixPriceDelivery() {
   const deliveryCostRef = document.getElementById(`delivery-cost`);
   const totalCostRef = document.getElementById(`total-cost`);
-  deliveryCostRef.innerHTML = parseFloat(deliveryCost).toFixed(2).replace(".", ",") + ` €`;
-  totalCostRef.innerHTML = parseFloat(totalCost).toFixed(2).replace(".", ",") + ` €`;
+  deliveryCostRef.innerHTML =
+    parseFloat(deliveryCost).toFixed(2).replace(".", ",") + ` €`;
+  totalCostRef.innerHTML =
+    parseFloat(totalCost).toFixed(2).replace(".", ",") + ` €`;
 }
 
 function fixPriceSubtotal() {
   const subtotalRef = document.getElementById(`subtotal`);
-  subtotalRef.innerHTML = parseFloat(subtotal).toFixed(2).replace(".", ",") + ` €`;
+  subtotalRef.innerHTML =
+    parseFloat(subtotal).toFixed(2).replace(".", ",") + ` €`;
 }
 
 function getAmountCart(amountindex) {
@@ -101,26 +107,33 @@ function getAmountCart(amountindex) {
 }
 
 function getCartPrice(cartPriceIndex) {
-  const cartPriceRef = document.getElementById(`item-cart-price-${cartPriceIndex}`);
+  const cartPriceRef = document.getElementById(
+    `item-cart-price-${cartPriceIndex}`
+  );
   cartPriceRef.innerHTML = "";
   cartPriceRef.innerHTML += myDishes[cartPriceIndex].cartprice;
 }
 
 function removeItem(removeItemIndex) {
   if (myDishes[removeItemIndex].amount !== 0) {
-    const cartPriceRef = document.getElementById(`item-cart-price-${removeItemIndex}`);
-    const amountRef = document.getElementById(`item-cart-counter-${removeItemIndex}`);
-    myDishes[removeItemIndex].amount--;
-    myDishes[removeItemIndex].cartprice -= myDishes[removeItemIndex].price;
-    amountRef.innerHTML = "";
-    amountRef.innerHTML += myDishes[removeItemIndex].amount;
-    cartPriceRef.innerHTML = "";
-    cartPriceRef.innerHTML += myDishes[removeItemIndex].cartprice;
+    getItemsToRemove(removeItemIndex);
     fixPriceShoppingCart(removeItemIndex);
     removeSubtotal(removeItemIndex);
-  } if (myDishes[removeItemIndex].amount == 0) {
+  }
+  if (myDishes[removeItemIndex].amount == 0) {
     deleteItemFromCart(removeItemIndex);
   }
+}
+
+function getItemsToRemove(toRemoveItemIndex) {
+  const cartPriceRef = document.getElementById(`item-cart-price-${toRemoveItemIndex}`);
+  const amountRef = document.getElementById(`item-cart-counter-${toRemoveItemIndex}`);
+  myDishes[toRemoveItemIndex].amount--;
+  myDishes[toRemoveItemIndex].cartprice -= myDishes[toRemoveItemIndex].price;
+  amountRef.innerHTML = "";
+  amountRef.innerHTML += myDishes[toRemoveItemIndex].amount;
+  cartPriceRef.innerHTML = "";
+  cartPriceRef.innerHTML += myDishes[toRemoveItemIndex].cartprice;
 }
 
 function deleteItemFromCart(deleteItemIndex) {
@@ -130,25 +143,25 @@ function deleteItemFromCart(deleteItemIndex) {
   myDishes[deleteItemIndex].amount = 0;
   const cartPriceRef = document.getElementById(`shopping-cart-${deleteItemIndex}`);
   cartPriceRef.remove();
-  const subTotalRef = document.getElementById('subtotal');
+  const subTotalRef = document.getElementById("subtotal");
   subTotalRef.innerHTML = subtotal;
-  const totalREf = document.getElementById('total-cost');
+  const totalREf = document.getElementById("total-cost");
   totalREf.innerHTML = totalCost;
   fixPriceSubtotal();
   fixPriceDelivery();
 }
 
 function getSubtotal(subtotalIndex) {
-    const element = myDishes[subtotalIndex].price;
-    const subtotalRef = document.getElementById('subtotal')
-    subtotal += myDishes[subtotalIndex].price;
-    subtotalRef.innerHTML += subtotal;
-    fixPriceSubtotal();
+  const element = myDishes[subtotalIndex].price;
+  const subtotalRef = document.getElementById("subtotal");
+  subtotal += myDishes[subtotalIndex].price;
+  subtotalRef.innerHTML += subtotal;
+  fixPriceSubtotal();
 }
 
 function removeSubtotal(subtotalIndex) {
   const element = myDishes[subtotalIndex].price;
-  const subtotalRef = document.getElementById('subtotal')
+  const subtotalRef = document.getElementById("subtotal");
   subtotal -= myDishes[subtotalIndex].price;
   subtotalRef.innerHTML -= subtotal;
   getTotalcost();
@@ -156,50 +169,47 @@ function removeSubtotal(subtotalIndex) {
 }
 
 function getTotalcost() {
-  const totalCostRef = document.getElementById('total-cost');
+  const totalCostRef = document.getElementById("total-cost");
   totalCost = subtotal + deliveryCost;
-  totalCostRef.innerHTML = '';
-  totalCostRef.innerHTML = totalCost;  
-  fixPriceDelivery()
+  totalCostRef.innerHTML = "";
+  totalCostRef.innerHTML = totalCost;
+  fixPriceDelivery();
 }
 
 function toggleCartMobile() {
-  const cart = document.querySelector('.shoppingCartContainer');
-  cart.classList.toggle('d_none');
+  const cart = document.querySelector(".shoppingCartContainer");
+  cart.classList.toggle("d_none");
 }
 
 function placeOrder() {
   if (subtotal !== 0) {
     clearCart();
-    const confirmation = document.getElementById('order-confirmation');
-    confirmation.classList.remove('d_none'); 
-  }
-  else{
-    const confirmation = document.getElementById('order-not-confirmed');
-    confirmation.classList.remove('d_none'); 
+    const confirmation = document.getElementById("order-confirmation");
+    confirmation.classList.remove("d_none");
+  } else {
+    const confirmation = document.getElementById("order-not-confirmed");
+    confirmation.classList.remove("d_none");
   }
 }
 
 function clearCart() {
   for (let i = 0; i < myDishes.length; i++) {
-      myDishes[i].amount = 0;
-      myDishes[i].cartprice = 0;
-      const cartItem = document.getElementById(`shopping-cart-${i}`);
-      if (cartItem) {
-          cartItem.remove();
-      }
+    myDishes[i].amount = 0;
+    myDishes[i].cartprice = 0;
+    const cartItem = document.getElementById(`shopping-cart-${i}`);
+    if (cartItem) {cartItem.remove();}
   }
-    subtotal = 0;
+  subtotal = 0;
   totalCost = deliveryCost;
-  const subTotalRef = document.getElementById('subtotal');
-  const totalRef = document.getElementById('total-cost');
+  const subTotalRef = document.getElementById("subtotal");
+  const totalRef = document.getElementById("total-cost");
   subTotalRef.innerHTML = subtotal.toFixed(2).replace(".", ",") + " €";
   totalRef.innerHTML = totalCost.toFixed(2).replace(".", ",") + " €";
 }
 
 function closeDisplay() {
-  const confirmation = document.getElementById('order-confirmation');
-  const notConfirmed = document.getElementById('order-not-confirmed');
-  notConfirmed.classList.add('d_none');
-  confirmation.classList.add('d_none');
+  const confirmation = document.getElementById("order-confirmation");
+  const notConfirmed = document.getElementById("order-not-confirmed");
+  notConfirmed.classList.add("d_none");
+  confirmation.classList.add("d_none");
 }

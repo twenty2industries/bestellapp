@@ -75,7 +75,7 @@ main {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: 23;
+    z-index: 10;
     top: -3rem;
     margin-bottom: -4rem;
   }
@@ -322,6 +322,10 @@ footer {
     }
   }
 
+  .totalArea {
+    gap: 2rem;
+  }
+
   .mobileCheckout {
     background-image: url("assets/icons/illustration/mobileCheckoutCart.png");
     background-position: center;
@@ -342,10 +346,6 @@ footer {
 
   .menuTabsDisplay {
     justify-content: space-between;
-  }
-
-  .logo {
-    display: none;
   }
 }
 
