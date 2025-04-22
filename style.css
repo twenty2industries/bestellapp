@@ -69,7 +69,7 @@ main {
 
   .logo {
     position: relative;
-    height: 15rem;
+    height: 12rem;
     border-radius: 40px;
     background: url(assets/icons/Favicon/apple-touch-icon.png);
     background-position: center;
@@ -100,7 +100,7 @@ main {
     align-items: center;
     background-color: #ffce5b3b;
     padding: 0rem 2rem;
-    height: 4%;
+    height: 4rem;
     gap: 2rem;
     margin-bottom: 2rem;
   }
@@ -110,7 +110,7 @@ main {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 10%;
+    height: 14rem;
     margin-bottom: 2rem;
   }
 
@@ -307,18 +307,22 @@ footer {
 
 @media (max-width: 975px) {
   main {
+    flex-direction: column;
     .shoppingCartContainer {
       padding: 0rem 8rem;
       width: 100%;
-      height: 19rem;
-      position: absolute;
-      top: -0.7rem;
+      height: 25rem;
+      position: sticky;
+      bottom: -1.7rem;
       background-color: rgb(182, 182, 182);
       overflow-y: auto;
-    }
+  }
 
     .contentArea {
       width: 100%;
+    }
+    .dishDisplay {
+      padding-right: 3rem;
     }
   }
 
@@ -327,26 +331,26 @@ footer {
   }
 
   .mobileCheckout {
-    background-image: url("assets/icons/illustration/mobileCheckoutCart.png");
-    background-position: center;
+    background-image: url(assets/icons/illustration/mobileCheckoutCart.png);
+    /* background-position: center; */
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
-    width: 5rem;
-    height: 5rem;
+    position: fixed;
+    width: 7rem;
+    height: 6rem;
     background-color: #ff8008;
-    border-radius: 50px;
     padding-right: 6rem;
-  }
+    z-index: 14;
+    right: -2rem;
+    bottom: 15rem;
+}
 
   .mobileCheckout:hover {
     cursor: pointer;
     box-shadow: inset;
   }
 
-  .menuTabsDisplay {
-    justify-content: space-between;
-  }
 }
 
 @media (max-width: 523px) {

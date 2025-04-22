@@ -107,9 +107,7 @@ function getAmountCart(amountindex) {
 }
 
 function getCartPrice(cartPriceIndex) {
-  const cartPriceRef = document.getElementById(
-    `item-cart-price-${cartPriceIndex}`
-  );
+  const cartPriceRef = document.getElementById(`item-cart-price-${cartPriceIndex}`);
   cartPriceRef.innerHTML = "";
   cartPriceRef.innerHTML += myDishes[cartPriceIndex].cartprice;
 }
@@ -152,7 +150,6 @@ function deleteItemFromCart(deleteItemIndex) {
 }
 
 function getSubtotal(subtotalIndex) {
-  const element = myDishes[subtotalIndex].price;
   const subtotalRef = document.getElementById("subtotal");
   subtotal += myDishes[subtotalIndex].price;
   subtotalRef.innerHTML += subtotal;
@@ -160,7 +157,6 @@ function getSubtotal(subtotalIndex) {
 }
 
 function removeSubtotal(subtotalIndex) {
-  const element = myDishes[subtotalIndex].price;
   const subtotalRef = document.getElementById("subtotal");
   subtotal -= myDishes[subtotalIndex].price;
   subtotalRef.innerHTML -= subtotal;
@@ -201,10 +197,8 @@ function clearCart() {
   }
   subtotal = 0;
   totalCost = deliveryCost;
-  const subTotalRef = document.getElementById("subtotal");
-  const totalRef = document.getElementById("total-cost");
-  subTotalRef.innerHTML = subtotal.toFixed(2).replace(".", ",") + " €";
-  totalRef.innerHTML = totalCost.toFixed(2).replace(".", ",") + " €";
+  fixPriceSubtotal();
+  fixPriceDelivery();
 }
 
 function closeDisplay() {
@@ -212,4 +206,5 @@ function closeDisplay() {
   const notConfirmed = document.getElementById("order-not-confirmed");
   notConfirmed.classList.add("d_none");
   confirmation.classList.add("d_none");
+  toggleCartMobile();
 }

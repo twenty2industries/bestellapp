@@ -38,7 +38,6 @@ function returnContent() {
         </div>
         <div class="menuTabsDisplay">
         <div class="menuTabs">Hauptgerichte</div>
-        <div class="menuTabs">Beilagen</div>
         <div class="mobileCheckout" onclick="toggleCartMobile()"></div>
         </div>
         <div class="titleImgSecond"></div>
